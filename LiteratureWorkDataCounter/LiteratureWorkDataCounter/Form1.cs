@@ -16,5 +16,23 @@ namespace LiteratureWorkDataCounter
         {
             InitializeComponent();
         }
+
+        private void calculateAll_Click(object sender, EventArgs e)
+        {
+            characterCount(textInput.Text);
+        }
+        public void characterCount(string input)
+        {
+            string output = "";
+            StatFinder sf = new StatFinder(input);
+            int[] fullCount = sf.characterCount();
+            for (int i = 0; i < fullCount.Length; i++)
+            {
+                char placeHolder = (char)i;
+                output += (char)i + ": " + fullCount[i] + "\n";
+            }
+            output += "Full count: " + StatFinder.arrayAdd(fullCount);
+            characterCountOutput.Text = output;
+        }
     }
 }
